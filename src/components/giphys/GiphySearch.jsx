@@ -14,24 +14,25 @@ const GiphySearch = () => {
         if (text === '') {
             setAlert('Please enter something','error')
         } else {
-            //@todo search users
+            //@todo search GIF's
             searchGiphys(text);
 
-            setText('');
+            
         }
     }
     const handleClear = () => {
         clearGiphys();
+        setText('');
     }
 
     return (
-        <div className="grid grid-cols-1 xl:grid-cols-2 md:grid-cols-2 mb-8 gap-8">
-            <div>
+        <div className="grid grid-cols-1 xl:grid-cols-2 md:grid-cols-2 mb-8 gap-8 ">
+            <div >
                 <form onSubmit={handleSubmit} className="form-control">
                     <div className="relative">
                         <input value={text} onChange={handleChange}
-                            type="text" className="w-full pr-40 bg-gray-200 input input-lg text-black" placeholder="Search" />
-                        <button type="submit" className="absolute top-0 right-0 rounded-l-none btn btn-lg">Go</button>
+                            type="text" className="w-full pr-40 bg-gray-200 input input-lg text-black" placeholder="Article Name or Keywords" />
+                        <button type="submit" className="absolute top-0 right-0 rounded-l-none btn btn-lg ">Search</button>
                     </div>
                 </form>
             </div>

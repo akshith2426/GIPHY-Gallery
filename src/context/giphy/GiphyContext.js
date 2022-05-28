@@ -20,7 +20,7 @@ export const GiphyProvider = ({ children }) => {
         const params = new URLSearchParams({
             q:text
         })
-        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_TOKEN}&q=${params}&limit=20&lang=en`)
+        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_TOKEN}&q=${params}&limit=50&lang=en`)
         const {data} = await response.json();
         dispatch({
             type: 'GET_GIPHYS',

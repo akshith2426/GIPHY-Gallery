@@ -2,17 +2,29 @@ import React, { useContext} from 'react'
 import Spinner from '../layouts/Spinner';
 import GiphyItem from '../giphys/GiphyItem'
 import GiphyContext from '../../context/giphy/GiphyContext'
+import GiphyPagination from './GiphyPagination';
 
 const GiphyResults = () => {
-    const {giphys, loading } = useContext(GiphyContext);
+    const { giphys, loading } = useContext(GiphyContext);
+    const len = giphys.length;
     
     if (!loading) {
         return (
-            <div className="grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
-                {giphys.map((giphy) => {
-                    return <GiphyItem key={giphy.id} giphy={giphy} />
-                })}
-            </div>
+            <div>
+                {giphys.length > 0 ? (
+                    <GiphyPagination data={giphys}
+                        RenderComponent={GiphyItem}
+                        pageLimit={Math.ceil(len/9)}
+                        dataLimit={9}
+                    />
+                ) : (
+                        <h4 >No GIF's To Display.
+                            <br/>
+                            Please search for something above.
+                        </h4>
+                    )
+            } 
+        </div>
         )
     } else {
         return <Spinner />
